@@ -1,0 +1,20 @@
+Metric,Value
+Initial Capital (₹),"₹   1,000,000"
+Final Capital (₹),"₹   1,082,196"
+Total Return (%),    8.22%
+CAGR (%),    1.36%
+Sharpe Ratio,  -0.474
+Sortino Ratio,  -0.618
+Calmar Ratio,   0.067
+Max Drawdown (%),  -20.38%
+Win Rate (%),   58.79%
+Profit Factor,   1.043
+Total Trades,     910
+Long Trades,     910
+Short Trades,       0
+Avg Holding Period (days),     4.3
+Total Transaction Costs (₹),"₹     347,332"
+Exits — TIME,     172
+Exits — STOP_LOSS,     168
+Exits — TRAIL_STOP,       0
+Exits — RSI_EXIT,     570

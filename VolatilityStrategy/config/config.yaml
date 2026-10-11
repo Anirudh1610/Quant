@@ -1,0 +1,75 @@
+# Kite Connect credentials are loaded from .env (NOT stored here).
+# Required .env variables:
+#   KITE_API_KEY=<your_api_key>
+#   KITE_API_SECRET=<your_secret>
+#   KITE_ACCESS_TOKEN=<generated_daily_via_auth>
+#
+# Run once to get a fresh access token (valid until midnight):
+#   python main.py --auth --request-token <token_from_login_url>
+
+instruments:
+  # Instrument tokens (find via: kite.instruments("NSE") and kite.instruments("NFO"))
+  nifty_index_token: 256265        # NSE:NIFTY 50
+  india_vix_token: 264969          # NSE:INDIA VIX
+  # NIFTY Futures tokens change with each contract month.
+  # The data_loader builds a continuous series by fetching each month's contract.
+  # Format: NFO:NIFTY{YY}{MON}FUT  e.g. NFO:NIFTY25JULFUT
+  nifty_futures_exchange: "NFO"
+  nifty_futures_symbol_prefix: "NIFTY"
+
+dates:
+  start: "2016-01-01"
+  end: null                # null = today
+  train_end: "2022-12-31"
+  val_end: "2024-12-31"
+  # test = val_end -> end
+
+data:
+  raw_dir: "data/raw"
+  cache_dir: "data/cache"
+  interval: "day"
+  max_retries: 3
+  retry_delay_sec: 2       # seconds between retries
+  rate_limit_delay_sec: 0.4  # Kite allows ~3 req/sec
+
+features:
+  rv_windows: [5, 10, 20]
+  ma_windows: [20, 50]
+  vix_ma_windows: [5, 20]
+  atr_window: 14
+  lookback: 60             # sequence length for LSTM
+
+model:
+  hidden1: 64
+  hidden2: 32
+  dropout: 0.2
+  fc_hidden: 16
+  batch_size: 32
+  epochs: 100
+  learning_rate: 0.001
+  patience: 15             # early stopping patience
+  lr_patience: 7           # reduce-LR patience
+  lr_factor: 0.5
+  min_lr: 0.00001
+  seed: 42
+  model_dir: "models"
+  model_name: "lstm_vol_forecast.pt"
+  scaler_name: "feature_scaler.pkl"
+
+strategy:
+  threshold: 0.02          # edge (pct) to trigger signal
+  hold_days: 5
+  transaction_cost: 0.0005  # per side (0.05%)
+  slippage: 0.0002          # per side (0.02%)
+
+backtest:
+  initial_capital: 1000000  # ₹10 lakh notional
+  annual_trading_days: 252
+
+walk_forward:
+  initial_train_years: 3
+  retrain_freq: "monthly"   # "monthly" or "quarterly"
+
+reports:
+  output_dir: "reports"
+  plots_dir: "reports/plots"

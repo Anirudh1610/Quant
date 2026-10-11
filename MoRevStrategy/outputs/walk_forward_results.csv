@@ -1,0 +1,6 @@
+window_start,train_end,test_end,best_params,train_sharpe,oos_sharpe
+2019-01-02,2020-01-02,2020-04-02,"{'momentum_window': 20, 'rsi_long_entry': 15.0, 'rsi_short_entry': 85.0}",-3.786,-2.472
+2020-01-02,2021-01-02,2021-04-02,"{'momentum_window': 25, 'rsi_long_entry': 10.0, 'rsi_short_entry': 90.0}",0.536,1.963
+2021-01-02,2022-01-02,2022-04-02,"{'momentum_window': 15, 'rsi_long_entry': 10.0, 'rsi_short_entry': 90.0}",-0.269,-0.179
+2022-01-02,2023-01-02,2023-04-02,"{'momentum_window': 20, 'rsi_long_entry': 10.0, 'rsi_short_entry': 90.0}",-0.314,-3.8
+2023-01-02,2024-01-02,2024-04-02,"{'momentum_window': 20, 'rsi_long_entry': 15.0, 'rsi_short_entry': 85.0}",-1.232,-0.665

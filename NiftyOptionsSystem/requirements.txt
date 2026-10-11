@@ -1,0 +1,8 @@
+kiteconnect>=5.2.0
+pandas>=3.0.2
+numpy>=2.4.4
+scipy>=1.17.1
+pyarrow>=24.0.0
+python-dotenv>=1.2.2
+requests>=2.33.1
+pytest>=9.1.1
